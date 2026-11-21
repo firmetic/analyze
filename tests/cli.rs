@@ -36,7 +36,10 @@ fn reports_a_missing_argument() {
     assert_eq!(output.status.code(), Some(1));
     assert!(!output.stderr.is_empty(), "stderr should explain the usage");
     assert!(output.stdout.is_empty(), "stdout should be empty");
-    assert!(!dir.join("evidence.json").exists(), "nothing should be written");
+    assert!(
+        !dir.join("evidence.json").exists(),
+        "nothing should be written"
+    );
 }
 
 #[test]
@@ -51,9 +54,15 @@ fn reports_an_unreadable_elf() {
         .expect("run firmetic-analyze");
 
     assert_eq!(output.status.code(), Some(1));
-    assert!(!output.stderr.is_empty(), "stderr should explain the failure");
+    assert!(
+        !output.stderr.is_empty(),
+        "stderr should explain the failure"
+    );
     assert!(output.stdout.is_empty(), "stdout should be empty");
-    assert!(!dir.join("evidence.json").exists(), "nothing should be written");
+    assert!(
+        !dir.join("evidence.json").exists(),
+        "nothing should be written"
+    );
 }
 
 fn expected_ids() -> Vec<String> {
