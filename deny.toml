@@ -1,0 +1,55 @@
+[advisories]
+version = 2
+yanked = "deny"
+unmaintained = "all"
+unsound = "all"
+unused-ignored-advisory = "deny"
+
+[licenses]
+version = 2
+allow = ["MIT", "Apache-2.0", "Unicode-3.0"]
+unused-allowed-license = "deny"
+unused-license-exception = "deny"
+confidence-threshold = 1.0
+include-dev = true
+include-build = true
+
+[bans]
+multiple-versions = "deny"
+wildcards = "deny"
+external-default-features = "deny"
+workspace-default-features = "deny"
+
+[bans.workspace-dependencies]
+duplicates = "deny"
+unused = "deny"
+
+[[bans.features]]
+crate = "serde_derive"
+allow = ["default"]
+
+[bans.build]
+executables = "deny"
+interpreted = "deny"
+allow-build-scripts = [
+  { name = "proc-macro2" },
+  { name = "quote" },
+  { name = "serde" },
+  { name = "serde_core" },
+  { name = "serde_json" },
+  { name = "zmij" },
+]
+include-dependencies = true
+include-workspace = true
+include-archives = true
+
+[bans.std-replacements]
+scope = "all"
+level = "deny"
+
+[sources]
+unknown-registry = "deny"
+unknown-git = "deny"
+required-git-spec = "rev"
+unused-allowed-source = "deny"
+unused-allowed-org = "deny"
